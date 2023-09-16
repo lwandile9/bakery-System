@@ -5,27 +5,27 @@ const breadProducts=[
 
     {
      image:"../imgs/selling-products/brown-b.jpg",
-     productName:"brown-bread",
+     productName:"brown",
      productPrice:"9.90",
      productQuantity:"1",
     
     },{
         image:"../imgs/selling-products/white-b.jpg",
-        productName:"white-bread",
+        productName:"white",
         productPrice:"10.50",
         productQuantity:"1",
        
        },{
 
         image:"../imgs/selling-products/dumpy-b.jpg",
-        productName:"dumpy-bread",
+        productName:"dumpy",
         productPrice:"6.70",
         productQuantity:"1",
        
        
     },{
         image:"../imgs/selling-products/yellow-b.jpg",
-        productName:"yellow-bread",
+        productName:"yellow",
         productPrice:"11.40",
         productQuantity:"1",
        

@@ -38,28 +38,8 @@
    <main id="main-content">
     <div class="cell 1">
       <p id="product-type">Bread</p>
-      <div class="product-container">
-         <div class="products">
-           <img src="../imgs/selling-products/brown-b.jpg" alt="Fish">
-           <p id="Product-description">BROWN</p>
-           <p>R9.90</p>
-         </div>
-         <div class="products">
-           <img src="../imgs/selling-products/white-b.jpg" alt="Fish">
-           <p id="Product-description">WHITE</p>
-           <p>R10</p>
-         </div>
-         <div class="products">
-           <img src="../imgs/selling-products/dumpy-b.jpg" alt="Fish">
-           <p id="Product-description">DUMPY</p>
-           <p>R5.60</p>
-         </div>
-         <div class="products">
-           <img src="../imgs/selling-products/yellow-b.jpg" alt="Fish">
-           <p id="Product-description">Yellow </p>
-           <p>R11</p>
-         </div>
-         
+      <div id="bread-container" class="product-container">
+  
       </div>
 
     </div>
@@ -163,15 +143,10 @@
   </footer>
 
 </div>
-
+  <script src="../js/data.js"></script>
   <script  src="../js/display.js" type=""></script>
+  
    
-   <!-- snip -->
-<script>
-    let data = <?php echo json_encode($_GET["name"], JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
-    alert("Welcome back " + data);
-</script>
-<!-- snip -->
 
 </body>
 </html>
