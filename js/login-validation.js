@@ -17,17 +17,16 @@
  function validate(){
    if(userNameElement.value ==="" ){
   
-    userNameElement.style="border-bottom-color:red"
+    userNameElement.style="border-color:red"
 
-   }else if(passwordElement.value===""){
+   }else if(passwordElement.value==="" ){
  
-    passwordElement.style="border-bottom-color:red"
+    passwordElement.style="border-color:red"
+   
    }else {
 
     
    }
-
-
 
  }
 

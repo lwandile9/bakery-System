@@ -8,12 +8,14 @@ const breadProducts=[
      productName:"brown",
      productPrice:"9.90",
      productQuantity:"1",
+     productDiscount:"3"
     
     },{
         image:"../imgs/selling-products/white-b.jpg",
         productName:"white",
         productPrice:"10.50",
         productQuantity:"1",
+        productDiscount:"16"
        
        },{
 
@@ -21,6 +23,7 @@ const breadProducts=[
         productName:"dumpy",
         productPrice:"6.70",
         productQuantity:"1",
+        productDiscount:"20"
        
        
     },{
@@ -28,6 +31,7 @@ const breadProducts=[
         productName:"yellow",
         productPrice:"11.40",
         productQuantity:"1",
+        productDiscount:"13"
        
        }
 
@@ -38,30 +42,34 @@ const breadProducts=[
 const doughnutsProducts=[
 
     {
-     image:"../imgs/selling-products/brown-b.jpg",
-     productName:"brown-bread",
-     productPrice:"9.90",
+     image:"../imgs/selling-products/cruller-d.jpg",
+     productName:"Crullers",
+     productPrice:"3.60",
      productQuantity:"1",
+     productDiscount:"30"
     
     },{
-        image:"../imgs/selling-products/white-b.jpg",
-        productName:"white-bread",
-        productPrice:"10.50",
+        image:"../imgs/selling-products/mochi-d.jpg",
+        productName:"Mochi",
+        productPrice:"15.70",
         productQuantity:"1",
+        productDiscount:"13"
        
        },{
 
-        image:"../imgs/selling-products/dumpy-b.jpg",
-        productName:"dumpy-bread",
-        productPrice:"6.70",
+        image:"../imgs/selling-products/glazed-d.jpg",
+        productName:"Glazed",
+        productPrice:"8.70",
         productQuantity:"1",
+        productDiscount:"17"
        
        
     },{
-        image:"../imgs/selling-products/yellow-b.jpg",
-        productName:"yellow-bread",
-        productPrice:"11.40",
+        image:"../imgs/selling-products/vegan-d.jpg",
+        productName:"Vegan",
+        productPrice:"12.00",
         productQuantity:"1",
+        productDiscount:"3"
        
        }
 
@@ -71,69 +79,57 @@ const doughnutsProducts=[
 const cookiesProducts=[
 
     {
-     image:"../imgs/selling-products/brown-b.jpg",
-     productName:"brown-bread",
+     image:"../imgs/selling-products/bar-c.jpg",
+     productName:"Bar",
      productPrice:"9.90",
      productQuantity:"1",
+     productDiscount:"3"
     
     },{
-        image:"../imgs/selling-products/white-b.jpg",
-        productName:"white-bread",
-        productPrice:"10.50",
+        image:"../imgs/selling-products/pressed-c.jpg",
+        productName:"Pressed",
+        productPrice:"12.50",
         productQuantity:"1",
+        productDiscount:"5"
        
        },{
 
-        image:"../imgs/selling-products/dumpy-b.jpg",
-        productName:"dumpy-bread",
-        productPrice:"6.70",
+        image:"../imgs/selling-products/mooled.c.jpg",
+        productName:"Molded",
+        productPrice:"6.60",
         productQuantity:"1",
+        productDiscount:"2"
        
        
     },{
-        image:"../imgs/selling-products/yellow-b.jpg",
-        productName:"yellow-bread",
-        productPrice:"11.40",
+        image:"../imgs/selling-products/Refrigerator-c.jpg",
+        productName:"Refrigerated",
+        productPrice:"42.40",
         productQuantity:"1",
+        productDiscount:"11"
        
        }
 
 ];
    
 
-     // List of  pies objects
 
-const piesProducts=[
 
+//Cart data
+
+const cartData =[
     {
-     image:"../imgs/selling-products/brown-b.jpg",
-     productName:"brown-bread",
-     productPrice:"9.90",
-     productQuantity:"1",
-    
-    },{
-        image:"../imgs/selling-products/white-b.jpg",
-        productName:"white-bread",
-        productPrice:"10.50",
-        productQuantity:"1",
-       
-       },{
+      productName:"wowo",
+      quantity: 4
+    },
+    {
+      productName:"wowo",
+      quantity: 4
+    }
+  
+  
+  ];
+  
 
-        image:"../imgs/selling-products/dumpy-b.jpg",
-        productName:"dumpy-bread",
-        productPrice:"6.70",
-        productQuantity:"1",
-       
-       
-    },{
-        image:"../imgs/selling-products/yellow-b.jpg",
-        productName:"yellow-bread",
-        productPrice:"11.40",
-        productQuantity:"1",
-       
-       }
-
-];
-
-
-
+let json_str = JSON.stringify(cartData);
+createCookie('mycookie', json_str);
