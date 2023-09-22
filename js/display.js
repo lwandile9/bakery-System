@@ -3,6 +3,15 @@ const breadProductsElement = document.getElementById("bread-container");
 const cookiesProductsElement = document.getElementById("cookies-container");
 const doughnutsProductsElement = document.getElementById("doughnuts-container");
 const piesProductsElement = document.getElementById("pies-container");
+const cartQuantityElement = document.getElementById("main-cart");
+
+
+// Retrieve the cart from localStorage
+const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+cartQuantityElement.innerText = countQuantity();
+
+
+
 
 
   // displaying bread catagory 
@@ -13,6 +22,7 @@ breadProducts.forEach((product)=>{
   <img src="${product.image}" ><p class="discount">${product.productDiscount}%</p>
   <p id="Product-description">${product.productName}</p>
   <p id="Price">R${product.productPrice}</p>
+   <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
   <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
 </div>
     `; 
@@ -29,6 +39,7 @@ breadProductsElement.innerHTML=breadHtml;
   <img src="${product.image}"><p class="discount">${product.productDiscount}%</p>
   <p id="Product-description">${product.productName}</p>
   <p id="Price">R${product.productPrice}</p>
+  <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
   <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
 </div>
     `; 
@@ -45,6 +56,7 @@ cookiesProductsElement.innerHTML=cookiesHtml;
   <img src="${product.image}"><p class="discount">${product.productDiscount}%</p>
   <p id="Product-description">${product.productName}</p>
   <p id="Price">R${product.productPrice}</p>
+  <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
   <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
 </div>
     `; 
@@ -55,45 +67,48 @@ doughnutsProductsElement.innerHTML=doughnutsHtml;
 
 
 // adding to cart 
+let btnAddCartElement = document.querySelectorAll(".add-to-cart");
 
+btnAddCartElement.forEach((button) => {
+  button.addEventListener("click", () => {
+    const productName = button.dataset.product;
+    let matchingItem;
 
-let btnAddCartElement= document.querySelectorAll(".add-to-cart");
-const cartQuantity = document.getElementById("main-cart");
+    storedCart.forEach((item) => {
+      if (productName === item.productName) {
+        matchingItem = item;
+      }
+    });
 
+    if (matchingItem) {
+      matchingItem.cartQuantity += 1;
+    } else {
+      storedCart.push({
+        productName: productName,
+        cartQuantity: 1
+      });
+    }
 
+    // Update the cart in localStorage
+    localStorage.setItem('cart', JSON.stringify(storedCart));
 
-btnAddCartElement.forEach((button)=>{
-  
+    // Update the cart quantity display
+    cartQuantityElement.innerText =countQuantity();
 
-  button.addEventListener("click",()=>{
-  let data =button.getAttribute("data-product");
-  let json_str = getCookie('mycookie');
-  let cartData = JSON.parse(json_str);
-  cartData.push({
-        productName:data,
-        quantity:1
-        
+    let addedText = document.getElementById(productName);
 
-     })
-
-    
-     cartQuantity.innerText=2;
-    
-  })
-
-
+    addedText.style.opacity = 1;
+    setTimeout(() => {
+      addedText.style.opacity = 0;
+    }, 2000);
+  });
 });
 
 
- // functions 
 
- function showDiscount(value ,element){
 
-    if(value<=3){
-      element.style="dislpay:none"
-    }{
-      element.style="dislpay:flex"
-    }
- 
- }
+
+
+
+
 

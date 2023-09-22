@@ -5,14 +5,14 @@ const breadProducts=[
 
     {
      image:"../imgs/selling-products/brown-b.jpg",
-     productName:"brown",
+     productName:"Brown",
      productPrice:"9.90",
      productQuantity:"1",
      productDiscount:"3"
     
     },{
         image:"../imgs/selling-products/white-b.jpg",
-        productName:"white",
+        productName:"White",
         productPrice:"10.50",
         productQuantity:"1",
         productDiscount:"16"
@@ -20,7 +20,7 @@ const breadProducts=[
        },{
 
         image:"../imgs/selling-products/dumpy-b.jpg",
-        productName:"dumpy",
+        productName:"Dumpy",
         productPrice:"6.70",
         productQuantity:"1",
         productDiscount:"20"
@@ -28,7 +28,7 @@ const breadProducts=[
        
     },{
         image:"../imgs/selling-products/yellow-b.jpg",
-        productName:"yellow",
+        productName:"Yellow",
         productPrice:"11.40",
         productQuantity:"1",
         productDiscount:"13"
@@ -115,21 +115,3 @@ const cookiesProducts=[
 
 
 
-//Cart data
-
-const cartData =[
-    {
-      productName:"wowo",
-      quantity: 4
-    },
-    {
-      productName:"wowo",
-      quantity: 4
-    }
-  
-  
-  ];
-  
-
-let json_str = JSON.stringify(cartData);
-createCookie('mycookie', json_str);

@@ -6,7 +6,6 @@
  const  btnLoginElement = document.getElementById("btnLogin");
  const frmElement =document.querySelector(".login-form")
 
-  let name = "gjgjkg".length;
 
 
 

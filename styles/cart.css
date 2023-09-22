@@ -1,0 +1,138 @@
+#cart-products{
+
+display: grid;
+padding-top: 80px;
+grid-template-columns: 1.6fr 1fr 1fr;
+max-width: 900px;
+margin: auto;
+padding-left:  10px;
+
+}
+
+.cart-header{
+
+    height: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    max-width: 1000PX;
+    margin: auto;
+    
+
+}
+
+#cart-products h2{
+
+     color: rgb(28, 27, 27);
+     grid-column: 1/4;
+}
+.cart-summary{
+    border: 1.5px solid rgb(222, 222, 222);
+    border-radius: 4px;
+    padding: 8px;
+    max-width:300px;
+    height: 70vh;
+    background-color: white;
+
+   
+}
+
+.cart-summary .container{
+
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    
+}
+
+.order{
+    
+    padding: 12px;
+    grid-column: 2/4;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+
+}
+
+.cart-summary button{
+
+    padding: 2px 5px;
+    width: 100%;
+    align-self: center;
+}
+#total ,h4{
+    color: red;
+    font-weight: 650;
+    border-top: 1.5px solid rgb(222, 222, 222) ;
+    border-bottom: 1.5px solid rgb(222, 222, 222) ;
+}
+
+#pick-date label{
+
+    display:grid;
+    grid-template-columns: 0.35fr 5fr;
+    column-gap: 1%;
+}
+#pick-date input{
+
+    max-width: 15px;
+}
+
+.image-container{
+    width: 125px;
+    height: 125px;
+  
+}
+
+.order .card{
+
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    border: 1.5px solid rgb(222, 222, 222);
+    border-radius: 4px;
+    padding:12px;
+    column-gap: 3%;
+    background-color: white;
+    
+    
+    
+}
+
+
+
+@media screen and (min-width: 950px) {
+
+    #cart-products{
+
+        grid-template-columns: 0.6fr 1fr 1fr;
+        }
+
+
+}
+@media screen and (max-width: 500px) {
+
+    #cart-products{
+
+        grid-template-columns:1fr;
+        }
+        .order{
+           
+            grid-column-start: 1;
+        
+        }
+
+        .cart-summary{
+         
+            width:100%;
+            height: 100%;
+             
+        }
+
+}
