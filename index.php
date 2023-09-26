@@ -20,16 +20,16 @@
      </header>
      <Main >
     
-        <form action="inc/login.php" method="post"  class="login-form">
+        <form action="inc/login.php" method="post"  class="login-form" onsubmit="return validateForm()">
 
           <label>
-            Username:<input name="username" id="Login-Username" required placeholder="Username">
+            Username:<input name="username" id="Login-Username"require  placeholder="Username">
           </label>
           <label>
-            Password:<input name="password" id="Login-Password" required placeholder="Password">
+            Password:<input name="password" id="Login-Password" require  placeholder="Password">
           </label>
           <button id="btnLogin">Login</button>
-          <p>Don't have an account? <a href="signup.html">Signup</a></p>
+          <p>Don't have an account? <a href="signup.php">Signup</a></p>
 
         </form>
         
