@@ -18,7 +18,7 @@
           <div class="top-bar">
             <h1>My bakery</h1>
            
-            <a class="logout" href="index.html">Logout
+            <a class="logout" href="index.php">Logout
                 <i class="fa fa-sign-out"></i>
             </a>
             

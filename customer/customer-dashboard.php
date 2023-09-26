@@ -20,9 +20,10 @@
     </div>
     <nav class="top-nav">
        <ul  id="myLinks">
-        <li><a href="#">Orders</a></li>
-        <li><a href="../index.html">Logout</a></li>
-         <li><a  href="cart.html">
+        <li><a href="customer-dashboard.php">home</a></li>
+        <li><a href="orders.php">Orders</a></li>
+        <li><a href="../index.php">Logout</a></li>
+         <li><a  href="cart.php">
           <i class="fa fa-shopping-cart" aria-hidden="true">
             <div id="main-cart" class="cart-quantity"></div>
           </i>
