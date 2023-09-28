@@ -33,11 +33,7 @@
   padding-top: 2px;
 
 }
-#Logo img{
 
-  border-radius: 70%;
-
-}
 .fa-shopping-cart{
 
   position: relative;
@@ -199,9 +195,8 @@
 #main-header{
   
   grid-column: 1/4;
-  min-height: 40px;
+  min-height: 55px;
   background-color: rgb(214, 179, 132);
-  position: relative;
   position:sticky;
   top: 0px;
   z-index: 10;
