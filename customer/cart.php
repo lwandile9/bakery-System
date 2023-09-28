@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MY Bakery</title>
-  <link rel="stylesheet" href="../styles/ganeral.css">
- 
-  <link rel="stylesheet" href="../styles/footer.css">
-  <link rel="stylesheet" href="../styles/cart.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-</head>
-<body>
-   <header class="cart-header"><p>Checkou (8 items)</p></header>
+   <?php
+   include_once "header.php";
+   ?>
     <Main id="cart-products">
-         <h2>Review your order</h2>
+         <h2>Review your order:</h2>
         <div class="cart-summary">
             <h3>Order Summary</h3>
              <div class="container">
@@ -81,5 +69,6 @@
 
     </Main>
 
-</body>
-</html>
+ <?php
+   include_once "../footer.php";
+   ?>

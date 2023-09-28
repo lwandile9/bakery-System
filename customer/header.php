@@ -8,16 +8,26 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MY Bakery</title>
   <link rel="stylesheet" href="../styles/ganeral.css">
- 
   <link rel="stylesheet" href="../styles/footer.css">
   <link rel="stylesheet" href="../styles/customer.css">
+  <link rel="stylesheet" href="../styles/orders.css">
+  <link rel="stylesheet" href="../styles/cart.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+ 
 </head>
 <body>
 <div class="container">
    <header id="main-header">
+
+            <!-- Hamburger Menu Icon -->
+    <div id="menu-icon">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
     <div id="Logo">
+ 
     <?php
     
     if (isset($_SESSION["userID"])) {
@@ -29,20 +39,48 @@ session_start();
     </div>
 
     <nav class="top-nav">
-       <ul  id="myLinks">
-        <li><a href="customer-dashboard.php">home</a></li>
-        <li><a href="orders.php">Orders</a></li>
-        <li><a href="../index.php">Logout</a></li>
-         <li><a  href="cart.php">
-          <i class="fa fa-shopping-cart" aria-hidden="true">
-            <div id="main-cart" class="cart-quantity"></div>
-          </i>
-          
-         </a></li>
-        
-       </ul>
+        <ul id="myLinks">
+            <li id="home"><a href="customer-dashboard.php">home</a></li>
+            <li id="orders"><a href="orders.php">Orders</a></li>
+            <li id="logout"><a href="../index.php">Logout</a></li>
+            <li id="cart"><a href="cart.php">
+                <i class="fa fa-shopping-cart" aria-hidden="true">
+                <div id="main-cart" class="cart-quantity"></div>
+                </i>
+            </a></li>
+            
+    </ul>
+
       
     </nav>
 
+    <script>
+// Get the current page's URL
+var currentPageURL = window.location.href;
+
+// Check if the URL contains a specific substring to determine the current page
+if (currentPageURL.includes("customer-dashboard.php")) {
+  document.getElementById("home").style.backgroundColor = "rgb(237, 176, 97)";
+} else if (currentPageURL.includes("orders.php")) {
+  document.getElementById("orders").style.backgroundColor = "rgb(237, 176, 97)";
+} else if (currentPageURL.includes("../index.php")) {
+  document.getElementById("logout").style.backgroundColor= "rgb(237, 176, 97)";
+} else if (currentPageURL.includes("cart.php")) {
+  document.getElementById("cart").style.backgroundColor = "rgb(237, 176, 97)";
+
+}
+
+// JavaScript to toggle the menu on/off
+var menuIcon = document.getElementById("menu-icon");
+var menu = document.getElementById("menu");
+
+menuIcon.addEventListener("click", function () {
+  menu.classList.toggle("open");
+  menuIcon.classList.toggle("open");
+});
+
+
+</script>
+    
  
    </header>

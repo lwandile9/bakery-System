@@ -25,24 +25,8 @@
 
     </div>
   
-
    </main>
+   <?php
+   include_once "../footer.php";
+   ?>
 
-   
-   <footer id="main-footer">
-    <p>&copy;MY Bakery.co.za</p>
-    <div>
-       <p>Customer care: 062191040</p>
-       <p>Cpmplaints: Lwandiletoto@gmail.com</p>
-    </div> 
-  </footer>
- 
-</div>
-  <script src="../js/cart.js"></script>
-  <script src="../js/data.js"></script>
-  <script  src="../js/display.js" type=""></script>
-  
-   
-
-</body>
-</html>

@@ -48,12 +48,6 @@
         </form>
         
      </Main>  
-     <footer>
-      <p>&copy; ... Bakery </p>
-      <p class="social-media-links">
-        <i class="fa-brands fa-facebook"></i>
-      </p>
-     </footer>
-  <script src="js/login-validation.js"></script>
-</body>
-</html>
+     <?php
+   include_once "footer.php";
+   ?>

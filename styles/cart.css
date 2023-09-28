@@ -1,30 +1,11 @@
 #cart-products{
-
+grid-column: 1/4;
 display: grid;
 padding-top: 80px;
 grid-template-columns: 1.6fr 1fr 1fr;
-max-width: 900px;
+width: 100%;
 margin: auto;
 padding-left:  10px;
-
-}
-
-.cart-header{
-
-    height: 60px;
-    padding-left: 30px;
-    padding-right: 30px;
-    background-color: burlywood;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    max-width: 1000PX;
-    margin: auto;
-    
 
 }
 
@@ -32,13 +13,14 @@ padding-left:  10px;
 
      color: rgb(28, 27, 27);
      grid-column: 1/4;
+     margin-bottom: 5px;
 }
 .cart-summary{
     border: 1.5px solid rgb(222, 222, 222);
     border-radius: 4px;
     padding: 8px;
     max-width:300px;
-    height: 70vh;
+    height: 75vh;
     background-color: white;
 
    

@@ -34,14 +34,6 @@
         </form>
         
      </Main>  
-     <footer id="main-footer">
-      <p>&copy;MY Bakery.co.za</p>
-      <div>
-         <p>Customer care: 062191040</p>
-         <p>Cpmplaints: Lwandiletoto@gmail.com</p>
-      </div>
-       
-    </footer>
-  <script src="js/login-validation.js"></script>
-</body>
-</html>
+     <?php
+   include_once "footer.php";
+   ?>
