@@ -1,77 +1,104 @@
-
 const breadProductsElement = document.getElementById("bread-container");
 const cookiesProductsElement = document.getElementById("cookies-container");
 const doughnutsProductsElement = document.getElementById("doughnuts-container");
-const piesProductsElement = document.getElementById("pies-container");
 const cartQuantityElement = document.getElementById("main-cart");
-
 
 // Retrieve the cart from localStorage
 const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
 cartQuantityElement.innerText = countQuantity();
 
+// Function to fetch product data from PHP script
+function fetchProductData() {
+  // Make an AJAX request to your PHP script that fetches product data
+ 
+  fetch('../includes/getProducts.inc.php')
+    .then((response) => response.json())
+    .then((data) => {
+     
+      console.log("Data received:", data);
+      displayProducts(data);
+    })
+    .catch((error) => {
+      console.error('Error fetching product data:', error);
+    });
+}
+
+// Function to display product data on the HTML page
+function displayProducts(products) {
+
+  // Displaying bread category
+  
+  let breadHtml = '';
+  products.forEach((product) => {
+    if (product.productCatagory === "bread") { // Check the category
+      breadHtml += `
+        <div class="products">
+          <img src="${product.productImage}">
+          <p class="discount">${product.productDiscount}%</p>
+          <p id="Product-description">${product.productName}</p>
+          <p id="Price">R${product.productPrice}</p>
+          <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
+          <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
+        </div>
+      `;
+    }
+  });
+
+  breadProductsElement.innerHTML = breadHtml;
+
+  // Displaying cookies category
+  
+  let cookiesHtml = '';
+  products.forEach((product) => {
+    if (product.productCatagory === "cookies") { // Check the category
+      cookiesHtml += `
+        <div class="products">
+          <img src="${product.productImage}">
+          <p class="discount">${product.productDiscount}%</p>
+          <p id="Product-description">${product.productName}</p>
+          <p id="Price">R${product.productPrice}</p>
+          <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
+          <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
+        </div>
+      `;
+    }
+  });
+
+  cookiesProductsElement.innerHTML = cookiesHtml;
+
+  // Displeying doughnuts category
+  
+  let doughnutsHtml = '';
+  products.forEach((product) => {
+    if (product.productCatagory === "doughnuts") { // Check the category
+      doughnutsHtml += `
+        <div class="products">
+          <img src="${product.productImage}">
+          <p class="discount">${product.productDiscount}%</p>
+          <p id="Product-description">${product.productName}</p>
+          <p id="Price">R${product.productPrice}</p>
+          <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
+          <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
+        </div>
+      `;
+    }
+  });
+
+  doughnutsProductsElement.innerHTML = doughnutsHtml;
+
+ 
+}
+
+// Call the fetchProductData function when the page loads
+window.addEventListener('load', fetchProductData);
 
 
+//  adding to curt 
 
-
-  // displaying bread catagory 
- let  breadHtml=''
-breadProducts.forEach((product)=>{
-
-  breadHtml+=` <div class="products">
-  <img src="${product.image}" ><p class="discount">${product.productDiscount}%</p>
-  <p id="Product-description">${product.productName}</p>
-  <p id="Price">R${product.productPrice}</p>
-   <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
-  <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
-</div>
-    `; 
-
-});
-
-breadProductsElement.innerHTML=breadHtml;
-
- // displaying Cookies catagory 
- let  cookiesHtml=''
- cookiesProducts.forEach((product)=>{
-
-  cookiesHtml+=` <div class="products">
-  <img src="${product.image}"><p class="discount">${product.productDiscount}%</p>
-  <p id="Product-description">${product.productName}</p>
-  <p id="Price">R${product.productPrice}</p>
-  <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
-  <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
-</div>
-    `; 
-
-});
-
-cookiesProductsElement.innerHTML=cookiesHtml;
-
- // displaying Doughnuts catagory 
- let  doughnutsHtml=''
- doughnutsProducts.forEach((product)=>{
-
-  doughnutsHtml+=` <div class="products">
-  <img src="${product.image}"><p class="discount">${product.productDiscount}%</p>
-  <p id="Product-description">${product.productName}</p>
-  <p id="Price">R${product.productPrice}</p>
-  <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
-  <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
-</div>
-    `; 
-
-});
-
-doughnutsProductsElement.innerHTML=doughnutsHtml;
-
-
-// adding to cart 
-let btnAddCartElement = document.querySelectorAll(".add-to-cart");
-
-btnAddCartElement.forEach((button) => {
-  button.addEventListener("click", () => {
-    const productName = button.dataset.product;
+// Use event delegation to handle "Add to Cart" button clicks
+document.addEventListener('click', (event) => {
+  if (event.target && event.target.classList.contains('add-to-cart')) {
+    const productName = event.target.dataset.product;
     let matchingItem;
 
     storedCart.forEach((item) => {
@@ -93,7 +120,7 @@ btnAddCartElement.forEach((button) => {
     localStorage.setItem('cart', JSON.stringify(storedCart));
 
     // Update the cart quantity display
-    cartQuantityElement.innerText =countQuantity();
+    cartQuantityElement.innerText = countQuantity();
 
     let addedText = document.getElementById(productName);
 
@@ -101,14 +128,5 @@ btnAddCartElement.forEach((button) => {
     setTimeout(() => {
       addedText.style.opacity = 0;
     }, 2000);
-  });
+  }
 });
-
-
-
-
-
-
-
-
-

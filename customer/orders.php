@@ -13,8 +13,8 @@
            </div>
             
             <div class="product-details">
-                <p>Basic home bread</p>
-                <p>R330</p>
+                <p>Order ID: 889hfhf8d</p>
+                <p>Total Price Payed: R330</p>
                 <p>Quantity:3 </p>
                 <button>track Order</button>
             </div>
@@ -27,10 +27,10 @@
            </div>
             
             <div class="product-details">
-                <p>Basic home bread</p>
-                <p>R330</p>
+                <p>Order ID: 889hfhf8d</p>
+                <p>Total Price Payed: R330</p>
                 <p>Quantity:3 </p>
-                <button>Track Order</button>
+                <button>track Order</button>
             </div>
             
 

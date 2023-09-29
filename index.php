@@ -35,5 +35,21 @@
         
      </Main>  
      <?php
-   include_once "footer.php";
+   if(isset($_GET["error"])){
+    $error=$_GET["error"];
+
+       
+   switch ($error) {
+     case "wrongLogin":
+       echo '<p id ="errorMessages">Login details do no exists!</p>';
+       break;
+     case "wrongPassword":
+       echo '<p id ="errorMessages">Wrong Login Details!</p>';
+       break;
+     default:
+       echo '<p id ="errorMessages">Something went try Again!</p>';
+   }
+  }
+  include_once "footer.php";
+
    ?>

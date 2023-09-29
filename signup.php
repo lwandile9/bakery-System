@@ -49,5 +49,29 @@
         
      </Main>  
      <?php
+
+
+   if(isset($_GET["error"])){
+     $error=$_GET["error"];
+
+        
+    switch ($error) {
+      case "emptyInputs":
+        echo '<p id ="errorMessages">empty Inputs</p>';
+        break;
+      case "emailExists":
+        echo '<p id ="errorMessages">Email already registered...please login instead</p>';
+        break;
+      case "invalideEmail":
+        echo 'Invalide Email!';
+        break;
+      default:
+        echo '<p id ="errorMessages">Something went wrong, try again</p>';
+    }
+
+
+
+   }
+
    include_once "footer.php";
    ?>

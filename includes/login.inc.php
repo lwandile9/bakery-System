@@ -1,6 +1,5 @@
 <?php
  
-  
 
 if ( isset($_POST["submit"])){
 
@@ -20,6 +19,7 @@ if(emptyInputLogin($userName,$password)!==false){
 }
 
 loginUser($conn ,$userName,$password);
+
 
 }else{
 

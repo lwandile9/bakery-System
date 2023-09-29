@@ -31,8 +31,8 @@ session_start();
     <?php
     
     if (isset($_SESSION["userID"])) {
-      echo '<p>'.$_SESSION["userName"].'</p>
-      <i class="fa">&#xf2be;</i>';
+      echo '<div id="Profile">'.$_SESSION["userName"].'
+      <i class="fa">&#xf2be;</i></div>';
     }
     ?>
     
@@ -42,7 +42,7 @@ session_start();
         <ul id="myLinks">
             <li id="home"><a href="customer-dashboard.php">home</a></li>
             <li id="orders"><a href="orders.php">Orders</a></li>
-            <li id="logout"><a href="../index.php">Logout</a></li>
+            <li id="logout"><a href="../includes/logout.inc.php?logout=logout">Logout</a></li>
             <li id="cart"><a href="cart.php">
                 <i class="fa fa-shopping-cart" aria-hidden="true">
                 <div id="main-cart" class="cart-quantity"></div>
@@ -60,13 +60,13 @@ var currentPageURL = window.location.href;
 
 // Check if the URL contains a specific substring to determine the current page
 if (currentPageURL.includes("customer-dashboard.php")) {
-  document.getElementById("home").style.backgroundColor = "rgb(237, 176, 97)";
+  document.getElementById("home").style.backgroundColor = "rgb(85, 80, 243)";
 } else if (currentPageURL.includes("orders.php")) {
-  document.getElementById("orders").style.backgroundColor = "rgb(237, 176, 97)";
+  document.getElementById("orders").style.backgroundColor = "rgb(85, 80, 243)";
 } else if (currentPageURL.includes("../index.php")) {
-  document.getElementById("logout").style.backgroundColor= "rgb(237, 176, 97)";
+  document.getElementById("logout").style.backgroundColor= "rgb(85, 80, 243)";
 } else if (currentPageURL.includes("cart.php")) {
-  document.getElementById("cart").style.backgroundColor = "rgb(237, 176, 97)";
+  document.getElementById("cart").style.backgroundColor = "rgb(85, 80, 243)";
 
 }
 

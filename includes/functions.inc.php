@@ -55,7 +55,7 @@ function createUser($conn, $name, $surname, $email, $phoneNumber, $password, $ad
         mysqli_stmt_bind_param($stmt, "ssssss", $name, $surname, $email, $phoneNumber, $hashedPwd, $address);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
-        header("location: ../customer/customer-dashboard.php?signup=success");
+        header("location: ../index.php?signup=success");
         exit();
     }
 }

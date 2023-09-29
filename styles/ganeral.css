@@ -60,3 +60,17 @@ img{
    object-fit:contain;
 }
 
+#errorMessages{
+
+  color: rgb(213, 28, 28);
+  padding-left: 15%;
+  font-family: monospace;
+  font-weight: 900;
+  font-style: italic;
+  max-width: 400px;
+  min-width: 70%;
+  margin: auto;
+  border: solid 1px red;
+  margin-bottom: 20px;
+}
+
