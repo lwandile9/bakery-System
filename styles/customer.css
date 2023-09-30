@@ -1,5 +1,4 @@
 
-
 .top-nav ul{
 
   display: flex;
@@ -95,7 +94,7 @@
 
   width: 100%;
   height:auto;
-  min-height:100px;
+  min-height:205px;
   padding: 5px 6px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -143,7 +142,6 @@
   width: 3%;
   height: 10%;
   border-radius:2px;
-  font-style: italic;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -167,10 +165,10 @@
 
   
    font-size: 12px;
-   font-style: italic;
+   font-family: monospace;
    padding: 0px 20px;
    margin-top: -15px;
-   font-weight: 60;
+   font-weight: 600;
    text-decoration: none;
    
 

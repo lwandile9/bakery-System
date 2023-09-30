@@ -72,7 +72,7 @@ function displayProducts(products) {
   products.forEach((product) => {
     if (product.productCatagory === "doughnuts") { // Check the category
       doughnutsHtml += `
-        <div class="products">
+        <div id="${product.productID}" class="products">
           <img src="${product.productImage}">
           <p class="discount">${product.productDiscount}%</p>
           <p id="Product-description">${product.productName}</p>

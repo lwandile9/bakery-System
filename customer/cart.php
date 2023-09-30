@@ -19,47 +19,9 @@
             <button>Place an order</button>  
         </div>
         <div
-        <div class="order">
+        <div  id="cart-products-container" class="order">
          
-         <div class="card">
-            <div class="image-container">
-                <img src="../imgs/selling-products/pressed-c.jpg"> 
-           </div>
-            
-            <div class="product-details">
-                <p>Basic home bread</p>
-                <p>R330</p>
-                <p>Quantity:3 </p>
-                <button>Delete Item</button>
-            </div>
-            
-
-         </div>
-         <div class="card">
-            <div class="image-container">
-                <img src="../imgs/selling-products/mooled.c.jpg"> 
-           </div>
-            
-            <div class="product-details">
-                <p>Basic home bread</p>
-                <p>R330</p>
-                <p>Quantity:3 </p>
-                <button>Delete Item</button>
-            </div>
-            
-
-         </div>
-         <div class="card">
-            <div class="image-container">
-                <img src="../imgs/selling-products/brown-b.jpg"> 
-           </div>
-            
-            <div class="product-details">
-                <p>Basic home bread</p>
-                <p>R330</p>
-                <p>Quantity:3 </p>
-                <button>Delete Item</button>
-            </div>
+         
             
 
          </div>

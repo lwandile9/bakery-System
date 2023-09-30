@@ -32,7 +32,7 @@
           <p>Don't have an account? <a href="signup.php">Signup</a></p>
 
         </form>
-        
+         
      </Main>  
      <?php
    if(isset($_GET["error"])){
