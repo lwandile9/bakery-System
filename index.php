@@ -23,10 +23,10 @@
         <form action="includes/login.inc.php" method="post"  class="login-form" onsubmit="return validateForm()">
 
           <label>
-            Username:<input name="userName" id="Login-Username"require  placeholder="Username">
+            Username:<input name="userName" id="Login-Username"required placeholder="Username">
           </label>
           <label>
-            Password:<input name="password" id="Login-Password" require  placeholder="Password">
+            Password:<input name="password" id="Login-Password" required  placeholder="Password">
           </label>
           <button name="submit" id="btnLogin">Login</button>
           <p>Don't have an account? <a href="signup.php">Signup</a></p>
@@ -45,6 +45,9 @@
        break;
      case "wrongPassword":
        echo '<p id ="errorMessages">Wrong Login Details!</p>';
+       break;
+     case "success":
+       echo '<p id ="errorMessages">Login using the email as Username </p>';
        break;
      default:
        echo '<p id ="errorMessages">Something went try Again!</p>';
