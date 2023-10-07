@@ -9,9 +9,5 @@
 </div>
   <script src="../js/cart.js"></script>
   <script src="../js/data.js"></script>
-  <script  src="../js/display.js" type=""></script>
-  
-   
-
 </body>
 </html>

@@ -15,7 +15,6 @@ function fetchProductData() {
     .then((response) => response.json())
     .then((data) => {
      
-      console.log("Data received:", data);
       displayProducts(data);
     })
     .catch((error) => {
@@ -38,7 +37,7 @@ function displayProducts(products) {
           <p id="Product-description">${product.productName}</p>
           <p id="Price">R${product.productPrice}</p>
           <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
-          <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
+          <button class="add-to-cart" data-product="${product.productName}" data-product-id="${product.productID}">add to Cart</button>
         </div>
       `;
     }
@@ -58,7 +57,7 @@ function displayProducts(products) {
           <p id="Product-description">${product.productName}</p>
           <p id="Price">R${product.productPrice}</p>
           <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
-          <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
+          <button class="add-to-cart" data-product="${product.productName}" data-product-id="${product.productID}">add to Cart</button>
         </div>
       `;
     }
@@ -72,13 +71,13 @@ function displayProducts(products) {
   products.forEach((product) => {
     if (product.productCatagory === "doughnuts") { // Check the category
       doughnutsHtml += `
-        <div id="${product.productID}" class="products">
+        <div data-product-Id="${product.productId}" class="products">
           <img src="${product.productImage}">
           <p class="discount">${product.productDiscount}%</p>
           <p id="Product-description">${product.productName}</p>
           <p id="Price">R${product.productPrice}</p>
-          <p id="${product.productName}" class="added-to-cart">Added&#10003;</p>
-          <button class="add-to-cart" data-product="${product.productName}">add to Cart</button>
+          <p id="${product.productName}" class="added-to-cart">Added\u2713</p>
+          <button class="add-to-cart" data-product="${product.productName}" data-product-id="${product.productID}">add to Cart</button>
         </div>
       `;
     }
@@ -94,39 +93,53 @@ window.addEventListener('load', fetchProductData);
 
 
 //  adding to curt 
-
 // Use event delegation to handle "Add to Cart" button clicks
 document.addEventListener('click', (event) => {
   if (event.target && event.target.classList.contains('add-to-cart')) {
     const productName = event.target.dataset.product;
-    let matchingItem;
+    const productID = event.target.dataset.productId; 
+    const productQuantity = 1; 
 
-    storedCart.forEach((item) => {
-      if (productName === item.productName) {
-        matchingItem = item;
+    // Send a POST request to cart.inc.php script
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '../includes/cart.inc.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Define the data to send to the PHP script
+    const data = `productID=${encodeURIComponent(productID)}&productQuantity=${encodeURIComponent(productQuantity)}`;
+
+    xhr.onreadystatechange = function () {
+      console.log(xhr.responseText);
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        
+        const response = JSON.parse(xhr.responseText);
+        // Find the corresponding paragraph element and update its text
+        const addedParagraph = document.getElementById(productName);
+        if (response.success === true) {
+          
+            addedParagraph.style.opacity="1";
+            setTimeout(() => {
+              addedParagraph.style.opacity="0";
+            }, 1000);
+             
+        }else{
+
+          addedParagraph.style.opacity="1";
+          addedParagraph.innerText = 'Error! adding Item';
+          
+          setTimeout(() => {
+            addedParagraph.style.opacity="0";
+          }, 1000);
+
+
+        }
+
+        
+        
       }
-    });
+    };
 
-    if (matchingItem) {
-      matchingItem.cartQuantity += 1;
-    } else {
-      storedCart.push({
-        productName: productName,
-        cartQuantity: 1
-      });
-    }
-
-    // Update the cart in localStorage
-    localStorage.setItem('cart', JSON.stringify(storedCart));
-
-    // Update the cart quantity display
-    cartQuantityElement.innerText = countQuantity();
-
-    let addedText = document.getElementById(productName);
-
-    addedText.style.opacity = 1;
-    setTimeout(() => {
-      addedText.style.opacity = 0;
-    }, 2000);
+    // Send the data to the PHP script
+    xhr.send(data);
   }
 });

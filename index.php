@@ -34,6 +34,8 @@
         </form>
          
      </Main>  
+
+
      <?php
    if(isset($_GET["error"])){
     $error=$_GET["error"];
@@ -53,6 +55,6 @@
        echo '<p id ="errorMessages">Something went try Again!</p>';
    }
   }
-  include_once "footer.php";
+ 
 
    ?>

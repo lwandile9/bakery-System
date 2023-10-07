@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "dbh.inc.php";
 
 // SQL query to retrieve product data
@@ -16,6 +17,7 @@ if (!$result) {
     
     // Check if any products were found
     if (count($products) > 0) {
+    
         // Encode the product data as JSON
         $jsonResponse = json_encode($products);
         // Set JSON content type header

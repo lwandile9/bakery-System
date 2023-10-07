@@ -33,6 +33,7 @@ session_start();
     if (isset($_SESSION["userID"])) {
       echo '<div id="Profile">'.$_SESSION["userName"].'
       <i class="fa">&#xf2be;</i></div>';
+     $id=  ($_SESSION["userID"]);
     }
     ?>
     
@@ -43,7 +44,7 @@ session_start();
             <li id="home"><a href="customer-dashboard.php">home</a></li>
             <li id="orders"><a href="orders.php">Orders</a></li>
             <li id="logout"><a href="../includes/logout.inc.php?logout=logout">Logout</a></li>
-            <li id="cart"><a href="cart.php">
+            <li id="cart"><a href="cart.php"
                 <i class="fa fa-shopping-cart" aria-hidden="true">
                 <div id="main-cart" class="cart-quantity"></div>
                 </i>
@@ -53,11 +54,11 @@ session_start();
 
       
     </nav>
-
     <script>
+
 // Get the current page's URL
 var currentPageURL = window.location.href;
-
+ // changing background color of an active page
 // Check if the URL contains a specific substring to determine the current page
 if (currentPageURL.includes("customer-dashboard.php")) {
   document.getElementById("home").style.backgroundColor = "rgb(85, 80, 243)";

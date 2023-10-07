@@ -1,40 +1,59 @@
 <?php
+session_start(); // Start the PHP session
+
 require_once "dbh.inc.php";
+// Get the user ID from the PHP session
+$userID = $_SESSION['userID']; // Replace 'user_id' with the actual session variable name
 
-if (isset($_POST['action'])) {
-    if ($_POST['action'] === 'addToCart') {
-        $productName = $_POST['productName'];
+// Get the product ID and product quantity from the POST request
+$productID = $_POST['productID'];
+$productQuantity = $_POST['productQuantity'];
 
-        // Check if the product already exists in the cart
-        $stmt = $conn->prepare("SELECT * FROM cart WHERE productName = ?");
-        $stmt->bind_param("s", $productName);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $stmt->close();
+// You can perform validation and sanitization on $productID and $productQuantity here if needed
 
-        if ($result->num_rows > 0) {
-            // Product exists, update cart quantity
-            $row = $result->fetch_assoc();
-            $cartQuantity = $row['cartQuantity'] + 1;
-            $stmt = $conn->prepare("UPDATE cart SET cartQuantity = ? WHERE productName = ?");
-            $stmt->bind_param("is", $cartQuantity, $productName);
-            $stmt->execute();
-            $stmt->close();
-        } else {
-            // Product does not exist, insert into cart
-            $cartQuantity = 1;
-            $stmt = $conn->prepare("INSERT INTO cart (productName, cartQuantity) VALUES (?, ?)");
-            $stmt->bind_param("si", $productName, $cartQuantity);
-            $stmt->execute();
-            $stmt->close();
-        }
-    } elseif ($_POST['action'] === 'getCart') {
-        // Retrieve cart data
-        $cart = [];
-        $result = $conn->query("SELECT * FROM cart");
-        while ($row = $result->fetch_assoc()) {
-            $cart[] = $row;
-        }
-        echo json_encode($cart);
+// Check if the product already exists in the cart
+$stmt = $conn->prepare("SELECT productId, productQuantity FROM tblcart WHERE userId = ? AND productId = ?");
+$stmt->bind_param("ii", $userID, $productID);
+$stmt->execute();
+$stmt->store_result();
+
+if ($stmt->num_rows > 0) {
+    // The product already exists in the cart, so update its quantity
+    $stmt->bind_result($existingProductID, $existingQuantity);
+    $stmt->fetch();
+    $newQuantity = $existingQuantity + $productQuantity;
+
+    $updateStmt = $conn->prepare("UPDATE tblcart SET productQuantity = ? WHERE userId = ? AND productId = ?");
+    $updateStmt->bind_param("iii", $newQuantity, $userID, $productID);
+
+    if ($updateStmt->execute()) {
+        // Return a JSON response indicating success
+        $response = ['success' => true];
+        echo json_encode($response);
+    } else {
+        // Return a JSON response indicating failure
+        $response = ['success' => false, 'error' => $conn->error];
+        echo json_encode($response);
     }
+
+    $updateStmt->close();
+} else {
+    // The product does not exist in the cart, so insert it
+    $insertStmt = $conn->prepare("INSERT INTO tblcart (userId, productId, productQuantity) VALUES (?, ?, ?)");
+    $insertStmt->bind_param("iii", $userID, $productID, $productQuantity);
+
+    if ($insertStmt->execute()) {
+        // Return a JSON response indicating success
+        $response = ['success' => true];
+        echo json_encode($response);
+    } else {
+        // Return a JSON response indicating failure
+        $response = ['success' => false, 'error' => $conn->error];
+        echo json_encode($response);
+    }
+
+    $insertStmt->close();
 }
+
+$stmt->close();
+$conn->close();
