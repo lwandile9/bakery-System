@@ -65,7 +65,7 @@ padding-left:  10px;
 }
 #pick-date input{
 
-    max-width: 15px;
+    width: 200px;
 }
 
 .image-container{
@@ -94,7 +94,7 @@ padding-left:  10px;
 
     #cart-products{
 
-        grid-template-columns: 0.6fr 1fr 1fr;
+        grid-template-columns: 0.8fr 1fr 1fr;
         }
 
 

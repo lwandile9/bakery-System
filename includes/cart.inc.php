@@ -18,7 +18,7 @@ $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
-    // The product already exists in the cart, so update its quantity
+    // The product already exists then quantity + 1
     $stmt->bind_result($existingProductID, $existingQuantity);
     $stmt->fetch();
     $newQuantity = $existingQuantity + $productQuantity;
@@ -27,11 +27,11 @@ if ($stmt->num_rows > 0) {
     $updateStmt->bind_param("iii", $newQuantity, $userID, $productID);
 
     if ($updateStmt->execute()) {
-        // Return a JSON response indicating success
+        // Returning a JSON response indicating success
         $response = ['success' => true];
         echo json_encode($response);
     } else {
-        // Return a JSON response indicating failure
+        // Returning a JSON response indicating failure
         $response = ['success' => false, 'error' => $conn->error];
         echo json_encode($response);
     }

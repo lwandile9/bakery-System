@@ -51,6 +51,9 @@
      case "success":
        echo '<p id ="errorMessages">Login using the email as Username </p>';
        break;
+     case "userNotLoggedIn":
+       echo '<p id ="errorMessages">Please LogIn to place an order!</p>';
+       break;
      default:
        echo '<p id ="errorMessages">Something went try Again!</p>';
    }

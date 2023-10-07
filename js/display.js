@@ -1,15 +1,13 @@
 const breadProductsElement = document.getElementById("bread-container");
 const cookiesProductsElement = document.getElementById("cookies-container");
 const doughnutsProductsElement = document.getElementById("doughnuts-container");
-const cartQuantityElement = document.getElementById("main-cart");
 
-// Retrieve the cart from localStorage
-const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-cartQuantityElement.innerText = countQuantity();
+
+
 
 // Function to fetch product data from PHP script
 function fetchProductData() {
-  // Make an AJAX request to your PHP script that fetches product data
+  // Making an AJAX request to your PHP script that fetches product data
  
   fetch('../includes/getProducts.inc.php')
     .then((response) => response.json())
@@ -109,7 +107,7 @@ document.addEventListener('click', (event) => {
     const data = `productID=${encodeURIComponent(productID)}&productQuantity=${encodeURIComponent(productQuantity)}`;
 
     xhr.onreadystatechange = function () {
-      console.log(xhr.responseText);
+     
       if (xhr.readyState === 4 && xhr.status === 200) {
         
         const response = JSON.parse(xhr.responseText);

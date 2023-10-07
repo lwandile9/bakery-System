@@ -2,26 +2,17 @@
 cartProductContainerElement = document.getElementById("cart-products-container");
 
 
-function countQuantity(){
-    let totalCartQuantity=0;
-    storedCart.forEach((object)=>{
-  
-      totalCartQuantity+=object.cartQuantity;   
-  
-  
-   } )
-    return totalCartQuantity
-  }
+
 
    // Use event delegation to handle "Add to Cart" button clicks
 // Use event delegation to handle "Add to Cart" button clicks
 document.addEventListener('click', (event) => {
     if (event.target && event.target.classList.contains('add-to-cart')) {
       const productName = event.target.dataset.product;
-      const productID = event.target.dataset.productId; // Add this line
-      const productQuantity = 1; // You can modify this as needed
+      const productID = event.target.dataset.productId; 
+      const productQuantity = 1; 
   
-      // Send a POST request to your PHP script
+      // Sending a POST request to  script
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '../includes/cart.inc.php', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -31,7 +22,7 @@ document.addEventListener('click', (event) => {
   
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          // Handle the response from the PHP script if needed
+         
           const response = JSON.parse(xhr.responseText);
           console.log(response);
   
@@ -69,13 +60,13 @@ document.addEventListener('click', (event) => {
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-              // Request was successful, parse and populate cart data
+              // Request successful, parsing and populating cart data
               
               productInfo = JSON.parse(xhr.responseText);
               
               populateCartProducts();
           } else {
-              // Handle errors (e.g., display an error message)
+              //display an error message
               console.error('Error fetching cart data. Status code:', xhr.status);
           }
       }
@@ -89,28 +80,34 @@ window.addEventListener('load', function () {
 });
 
 
-    // Sample cart item data (you can replace this with your actual cart data)
-   
 
     // Function to populate the cart products container
     function populateCartProducts() {
       var cartProductsContainer = document.getElementById('cart-products-container');
-      
+       const cartTotalElement = document.getElementById("total");
+       const subTotalElement=document.getElementById("sub-total");
+       const deleveryFeeElement=document.getElementById("handling");
+       const numberItemsElement=document.getElementById("items-span");
       // Convert the productInfo object into an array
-      var productArray = Object.values(productInfo);
+      let productArray = Object.values(productInfo);
+      let cartSubtotal = 0;
+      let numberOfItems = 0;
       
       // Loop through productArray and create HTML elements for each cart item
       productArray.forEach(function (item) {
           let cartItemDiv = document.createElement('div');
           cartItemDiv.classList.add('card');
-          console.log("Item:", item);
+         
+          cartSubtotal += parseFloat(item.totalPrice);
+          numberOfItems++;
+         
           cartItemDiv.innerHTML = `
               <div class="image-container">
                   <img src="${item.productImage}">
               </div>
               <div class="product-details">
                   <p>${item.productName}</p>
-                  <p>${item.totalPrice}</p>
+                  <p>R${item.totalPrice}</p>
                   <p>Quantity: ${item.quantity}</p>
                   <button>Delete Item</button>
               </div>
@@ -118,6 +115,54 @@ window.addEventListener('load', function () {
   
           cartProductsContainer.appendChild(cartItemDiv);
       });
+      let deliveryFee = 10 * numberOfItems;
+      let cartTotalPrice = cartSubtotal + deliveryFee;
+      
+      deleveryFeeElement.innerText = `R${deliveryFee}`;
+      cartTotalElement.innerText = `R${cartTotalPrice.toFixed(2)}`;
+      subTotalElement.innerText = `R${cartSubtotal.toFixed(2)}`;
+      numberItemsElement.innerText = `${numberOfItems}`;
+    
+     
   }
 
+  // placing and order using palce order button
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('place-order').addEventListener('click', function () {
+        // Collect the necessary data
+        const totalPriceElement = document.getElementById("total");
+        const totoPrice = totalPriceElement.textContent.slice(1) || totalPriceElement.innerText.slice(1);
+
+        const deliveryDateTimeElement = document.getElementById("datetimepicker");
+const deleveryDateTime = deliveryDateTimeElement.value;
+alert(deleveryDateTime);
+
+        const numberOfProductsElement = document.getElementById("items-span");
+        const numberOfProducts = numberOfProductsElement.textContent || numberOfProductsElement.innerText;
+
+        // Prepare the data to send as an object
+        const orderData = {
+            totalPrice: totoPrice,
+            orderDate: deleveryDateTime,
+            numberItems: numberOfProducts
+        };
+
+        // Send the data to the PHP file using fetch
+        fetch('../includes/insertOrder.inc.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data); // Display the response from PHP (if any)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+});
   

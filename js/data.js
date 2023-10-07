@@ -1,17 +1,9 @@
 
-   // List of bread objects
-
-const breadProducts=[
-
-  
-
-];
+const breadProducts=[];
    
-
 // Function to fetch product data from PHP script
 function fetchProductData() {
-    // Make an AJAX request to your PHP script that fetches product data
-    // Replace '../includes/getProducts.inc.php' with the correct path to your PHP script
+    // Making an AJAX request to your PHP script that fetches product data
     fetch('../includes/getProducts.inc.php')
       .then((response) => response.json())
       .then((data) => {
