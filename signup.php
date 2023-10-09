@@ -22,24 +22,24 @@
         <form action="includes/signup.inc.php" method="post"  class="login-form">
 
           <label>
-            Name:<input name="name"  required placeholder="Username">
+            Name:<input name="name"  required placeholder="Name">
           </label>
 
           <label>
-           Surname:<input name="surname" required placeholder="Password">
+           Surname:<input name="surname" required placeholder="Surname">
           </label>
 
           <label>
-            Email:<input name="email" required placeholder="Username">
+            Email:<input name="email" required placeholder="Email: Example@gamil.com">
           </label>
           <label>
-            Cell Number:<input name="phoneNumber"  required placeholder="Username">
+            Cell Number:<input name="phoneNumber"  required placeholder="Phone Number">
           </label>
           <label>
             Pasword</Address>:<input name="password"  required placeholder="Password">
           </label>
           <label>
-            Address</Address>:<input name="address" required placeholder="Password">
+            Address</Address>:<input name="address" required placeholder="physical address">
           </label>
 
           <button name="signup" id="btnLogin">Signup</button>

@@ -9,6 +9,7 @@ session_start();
     <title>Bakery System Addmin Page</title>
     <link rel="stylesheet" href="../styles/ganeral.css">
     <link rel="stylesheet" href="../styles/admin/admin.css">
+    <link rel="stylesheet" href="../styles/admin/orders.css">
 </head>
 <body>
     <header>

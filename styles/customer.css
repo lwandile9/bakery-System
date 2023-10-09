@@ -48,10 +48,20 @@
   color: #f9f9f9;
 
 }
-#Logo #Profile .fa{
+#Logo #admin .fa{
 
   color: #f9f9f9;
   padding-left: 3px;
+  transition: 0.15s;
+
+}
+#Logo #admin .fa:hover{
+
+  color: #e71212;
+  padding-left: 3px;
+  border:solid 2px white;
+  
+ 
 
 }
 

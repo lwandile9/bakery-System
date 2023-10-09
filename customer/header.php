@@ -31,12 +31,15 @@ session_start();
     <?php
     
     if (isset($_SESSION["userID"])) {
-      echo '<div id="Profile">'.$_SESSION["userName"].'
-      <i class="fa">&#xf2be;</i></div>';
+      $name =$_SESSION["userName"];
+      echo '<div id="Profile">'. $name.'</div>';
+      if ($name==="Myuser"){
+        echo '<a href="../admin/admin-dashboard.php" id="admin"><i class="fa">&#xf2be;</i>';
+      }
      $id=  ($_SESSION["userID"]);
     }
     ?>
-    
+   
     </div>
 
     <nav class="top-nav">

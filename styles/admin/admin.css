@@ -77,7 +77,7 @@ background-color: whitesmoke;
 #display-section{
 
         width:100%; 
-        overflow-x: auto; 
+        overflow: auto; 
         border: 1px solid #ccc;
 }
 
@@ -126,3 +126,20 @@ background-color: whitesmoke;
     margin-left: 3px;
     border: none;
   }
+
+
+
+  /* mobile */
+
+
+  @media screen and (max-width: 490px) {
+
+    main{
+
+      padding-top: 5px;
+      height: 80vh;
+      grid-template-columns: 1fr;
+      grid-template-rows:0.5fr 3fr  ;
+  }
+  
+   }

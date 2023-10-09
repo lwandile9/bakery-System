@@ -27,6 +27,7 @@ function fetchOrders() {
               <p>Order ID: ${order.orderId}</p>
               <p>Total Price Payed: R${order.totalPrice}</p>
               <p>Quantity Items: ${order.orderNumberOfItems}</p>
+              <p>Dlevery Address: ${order.orderNumberOfItems}</p>
               <button data-orderID="${order.orderId}">Track Order</button>
             </div>
           </div>

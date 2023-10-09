@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 if ($stmtDelete->execute()) {
                     // Items deleted from cart
-                    echo "Go back to home page to add produts for your next order";
+                    echo "Thank you..Go back to home page to add produts for your next order";
                 } else {
                     echo "Error deleting items from cart: " . $stmtDelete->error;
                 }
