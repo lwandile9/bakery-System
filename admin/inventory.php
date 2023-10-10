@@ -1,4 +1,5 @@
 <?php
+ include_once "admin-dashboard.php";
 require_once "../includes/dbh.inc.php";
 
 $sql = "SELECT * FROM tblProducts";

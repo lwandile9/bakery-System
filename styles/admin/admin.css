@@ -44,7 +44,7 @@ header nav ul li a:hover {
 
 main{
 
-    padding-top: 50px;
+    padding-top: 30px;
     height: 90vh;
     display: grid;
     grid-template-columns: 0.7fr 3fr;

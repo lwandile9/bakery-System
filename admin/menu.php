@@ -1,11 +1,13 @@
+<?php include_once "admin-dashboard.php";?>
 <main>
-     <div class="update-price">
-      `
-    </div>
-     <div class="discounts">
-      
-    </div>
-     <div class="update-product">
-      
-    </div>
+  <h1 class="active-orders">Update Menu:</h1>
+  <section id="orders-container">
+    
+  </section>
+<script src="js/admin/orders.js"></script>
 </main>
+    <footer></footer>
+    
+    <script src="../js/admin/menu.js"></script>
+</body>
+</html>

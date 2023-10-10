@@ -34,26 +34,11 @@ session_start();
     <main>
         <nav class="side-nav">
             <ul>
-                <li id="home"><a href="">Home</a></li>
-                <li id ="orders"><a href="">Orders</a></li>
-                <li id ="menu"><a href="">Menue</a></li>
-                <li id="inventory"><a href="">Inventory</a></li>
+                <li id="home"><a href="home.php">Home</a></li>
+                <li id ="orders"><a id="orders-link" href="orders.php">Orders</a></li>
+                <li id ="menu"><a href="menu.php">Menue</a></li>
+                <li id="inventory"><a href="inventory.php">Inventory</a></li>
                 
             </ul>
         </nav>
-        <section id="display-section">
-            <!-- Add an empty div for displaying PHP content -->
-
-            
-
-
-            </div>
-
-
-        </section>
-    </main>
-    <footer></footer>
-    
-    <script src="../js/admin/display.js"></script>
-</body>
-</html>
+ 
