@@ -127,7 +127,12 @@ background-color: whitesmoke;
     border: none;
   }
 
+  .tblcontainer{
 
+    max-width: 99%;
+    overflow: auto;
+    padding: 20px 5px;
+  }
 
   /* mobile */
 
