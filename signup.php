@@ -11,9 +11,6 @@
 <body>
 
      <header>
-      <div>
-        <img src="imgs/Logo.png" alt="Bakery">
-     </div>
        <h1>My Backeries</h1>
         
      </header>
@@ -68,9 +65,6 @@
       default:
         echo '<p id ="errorMessages">Something went wrong, try again</p>';
     }
-
-
-
    }
 
    include_once "footer.php";

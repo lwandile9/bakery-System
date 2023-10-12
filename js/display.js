@@ -3,8 +3,6 @@ const cookiesProductsElement = document.getElementById("cookies-container");
 const doughnutsProductsElement = document.getElementById("doughnuts-container");
 
 
-
-
 // Function to fetch product data from PHP script
 function fetchProductData() {
   // Making an AJAX request to your PHP script that fetches product data
@@ -23,7 +21,7 @@ function fetchProductData() {
 // Function to display product data on the HTML page
 function displayProducts(products) {
 
-  // Displaying bread category
+  // Displayig bread category
   
   let breadHtml = '';
   products.forEach((product) => {

@@ -7,7 +7,7 @@ $sql = "SELECT * FROM tblproducts";
 $result = $conn->query($sql);
 
 if (!$result) {
-    // Handle the query error, e.g., log it or return an error message
+
     echo json_encode(["error" => "Query error: " . $conn->error]);
 } else {
     $products = array();

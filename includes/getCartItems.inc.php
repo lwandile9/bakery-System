@@ -8,7 +8,7 @@ $productInfo = array();
 
 // Prepare and execute the query to fetch cart items
 $stmt = $conn->prepare("SELECT productId, productQuantity FROM tblcart WHERE userId = ?");
-$stmt->bind_param("s", $userId); // Assuming userId is a string
+$stmt->bind_param("s", $userId); 
 $stmt->execute();
 
 // Get the result set

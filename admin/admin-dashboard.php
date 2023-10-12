@@ -10,6 +10,7 @@ session_start();
     <link rel="stylesheet" href="../styles/ganeral.css">
     <link rel="stylesheet" href="../styles/admin/admin.css">
     <link rel="stylesheet" href="../styles/admin/orders.css">
+    <link rel="stylesheet" href="../styles/admin/menu.css">
 </head>
 <body>
     <header>

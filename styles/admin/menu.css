@@ -1,0 +1,42 @@
+#menu-container{
+    max-width: 99%;
+    overflow: auto;
+    padding: 20px 5px;
+    grid-column: 1/4;
+   
+
+}
+
+.active-menu{
+
+    font-size: 22px;
+ 
+}
+.Input{
+    pointer-events: none;
+    background-color: transparent;
+    border-bottom: solid 1px burlywood;
+    border-radius: 0;
+    
+  
+
+}
+
+.edit{
+    
+    pointer-events: painted;
+    background-color: rgb(255, 255, 255);
+    border: solid 1.7px burlywood;
+    color: black;
+}
+
+.img-path{
+
+    max-width: 90%;
+    overflow: auto;
+   
+}
+
+.pic{
+    width: 300px;
+}

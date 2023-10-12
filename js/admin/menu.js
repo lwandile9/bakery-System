@@ -1,31 +1,28 @@
-// Get all the update buttons
 const updateButtons = document.querySelectorAll(".updateButton");
 
 updateButtons.forEach(button => {
     button.addEventListener("click", () => {
         const inputId = button.getAttribute("data-input");
-        const inputType = inputId.split("_")[0]; // Extract the input type
+        const inputType = inputId.split("_")[0]; // Extract the input type (e.g., productName, productImage, productCategory)
         const productId = inputId.split("_")[1]; // Extract the product ID
-        const input = document.getElementById(`${inputType}_${productId}`);
+        const input = document.getElementById(inputId);
 
         if (button.textContent === "Update") {
             // Switch to edit mode
             button.textContent = "Save";
             input.removeAttribute("readonly");
             input.classList.add("edit");
-
         } else {
             // Switch to save mode
             button.textContent = "Update";
             input.setAttribute("readonly", "true");
-            input.classList.remove("edit");
             input.classList.remove("edit");
 
             // Retrieve the updated value
             const updatedValue = input.value;
 
             // Send the updated value to the server via AJAX
-            fetch("../includes/update.inc.php", {
+            fetch("../includes/updateProducts.inc.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
@@ -41,9 +38,6 @@ updateButtons.forEach(button => {
             })
             .then(data => {
                 alert(data); // Display the response from the server
-                console.log("productId:", productId);
-                console.log("inputId:", inputId);
-                console.log("updatedValue:", updatedValue);
             })
             .catch(error => {
                 console.error("Error:", error);

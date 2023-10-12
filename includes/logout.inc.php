@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 function logoutUser() {
   
     $_SESSION = array();

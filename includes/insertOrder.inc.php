@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      require_once "functions.inc.php";
 
 
-        // Insert data into tblOrder
+        // Insert data into tblOrders
         $totalPrice = $orderData['totalPrice'];
         $orderDate = $orderData['orderDate'];
         $numberItems = $orderData['numberItems'];
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error: " . $stmt->error;
         }
 
-        // Close the statement and database connection
+        // Closing the statement and database connection
         $stmt->close();
         $conn->close();
     } else {

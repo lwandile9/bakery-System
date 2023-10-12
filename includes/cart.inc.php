@@ -1,15 +1,15 @@
 <?php
-session_start(); // Start the PHP session
-
+session_start(); 
 require_once "dbh.inc.php";
+require_once "functions.inc.php";
 // Get the user ID from the PHP session
-$userID = $_SESSION['userID']; // Replace 'user_id' with the actual session variable name
+$userID = $_SESSION['userID']; 
 
 // Get the product ID and product quantity from the POST request
-$productID = $_POST['productID'];
-$productQuantity = $_POST['productQuantity'];
+$productID = sanitizeInput($_POST['productID']);
+$productQuantity =sanitizeInput($_POST['productQuantity']);
 
-// You can perform validation and sanitization on $productID and $productQuantity here if needed
+
 
 // Check if the product already exists in the cart
 $stmt = $conn->prepare("SELECT productId, productQuantity FROM tblcart WHERE userId = ? AND productId = ?");

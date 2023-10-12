@@ -10,16 +10,10 @@
   <link rel="stylesheet" href="../styles/customer.css">
 </head>
 <body>
-
      <header>
-      <div>
-        <img src="imgs/Logo.png" alt="Bakery">
-     </div>
        <h1>My Backeries</h1>
-        
      </header>
      <Main >
-    
         <form action="includes/login.inc.php" method="post"  class="login-form" onsubmit="return validateForm()">
 
           <label>
@@ -34,7 +28,6 @@
         </form>
          
      </Main>  
-
 
      <?php
    if(isset($_GET["error"])){

@@ -1,11 +1,8 @@
 
 cartProductContainerElement = document.getElementById("cart-products-container");
 
-
-
-
    // Use event delegation to handle "Add to Cart" button clicks
-// Use event delegation to handle "Add to Cart" button clicks
+
 document.addEventListener('click', (event) => {
     if (event.target && event.target.classList.contains('add-to-cart')) {
       const productName = event.target.dataset.product;
@@ -17,7 +14,7 @@ document.addEventListener('click', (event) => {
       xhr.open('POST', '../includes/cart.inc.php', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   
-      // Define the data to send to the PHP script
+      // Defining the data to send to the PHP script
       const data = `productID=${encodeURIComponent(productID)}&productQuantity=${encodeURIComponent(productQuantity)}`;
   
       xhr.onreadystatechange = function () {
@@ -60,7 +57,7 @@ document.addEventListener('click', (event) => {
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-              // Request successful, parsing and populating cart data
+              // successful, parsing and populating cart data
               
               productInfo = JSON.parse(xhr.responseText);
               
@@ -158,7 +155,7 @@ alert(deleveryDateTime);
         })
         .then(response => response.text())
         .then(data => {
-            alert(data); // Display the response from PHP (if any)
+            alert(data); // Dsplays the response from PHP (if any)
         })
         .catch(error => {
             console.error('Error:', error);

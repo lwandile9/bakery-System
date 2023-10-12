@@ -3,7 +3,8 @@ include_once "dbh.inc.php";
 
 // Check if orderId and newStatus are set in the POST request
 if (isset($_POST['orderId'], $_POST['newStatus'])) {
-    // Sanitize and validate the data
+
+  
     $orderId = intval($_POST['orderId']);
     $newStatus = $_POST['newStatus'];
 
@@ -33,7 +34,7 @@ if (isset($_POST['orderId'], $_POST['newStatus'])) {
     $response = array("success" => false, "message" => "Missing orderId or newStatus in POST request");
 }
 
-// Close the database connection
+
 mysqli_close($conn);
 
 // Return JSON response

@@ -24,9 +24,9 @@ if ($result->num_rows > 0) {
         echo "<tr>
             <td>" . $row["productID"] . "</td>
             <td>" . $row["productName"] . "</td>
-            <td><input class='tableInput editable' id='productPrice_" . $row["productID"] . "' value='" . $row["productPrice"] . "' readonly><button class='updateButton' data-input='productPrice_" . $row["productID"] . "'>Update</button></td>
-            <td><input class='tableInput editable' id='productQuantity_" . $row["productID"] . "' value='" . $row["productQuantity"] . "' readonly><button class='updateButton' data-input='productQuantity_" . $row["productID"] . "'>Update</button></td>
-            <td><input class='tableInput editable' id='productDiscount_" . $row["productID"] . "' value='" . $row["productDiscount"] . "' readonly><button class='updateButton' data-input='productDiscount_" . $row["productID"] . "'>Update</button></td>
+            <td><input class='Input editable' id='productPrice_" . $row["productID"] . "' value='" . $row["productPrice"] . "' readonly><button class='updateButton' data-input='productPrice_" . $row["productID"] . "'>Update</button></td>
+            <td><input class='Input editable' id='productQuantity_" . $row["productID"] . "' value='" . $row["productQuantity"] . "' readonly><button class='updateButton' data-input='productQuantity_" . $row["productID"] . "'>Update</button></td>
+            <td><input class='Input editable' id='productDiscount_" . $row["productID"] . "' value='" . $row["productDiscount"] . "' readonly><button class='updateButton' data-input='productDiscount_" . $row["productID"] . "'>Update</button></td>
         </tr>";
     }
 
