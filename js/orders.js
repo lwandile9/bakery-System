@@ -36,7 +36,11 @@ function fetchOrders() {
               <p>Total Price Paid: R${order.totalPrice}</p>
               <p>Quantity Items: ${order.orderNumberOfItems}</p>
               <p id="delivery-address">Delivery Address: ${userAddress}</p>
-              <button data-orderID="${order.orderId}">Track Order</button>
+           
+          <form action="trackOrder.php" method="post">
+              <input type="hidden" name="orderId" value="${order.orderId}">
+              <button name="submit" type="submit">Track Order</button>
+          </form>
             </div>
           </div>
         `;
@@ -54,3 +58,23 @@ function fetchOrders() {
 
 // Call the fetchOrders function to load and display the orders
 fetchOrders();
+
+
+// tracking order 
+
+document.addEventListener('click', function (event) {
+  if (event.target && event.target.id === 'btnTrack') {
+    const orderId = event.target.getAttribute('data-orderID');
+    const form = event.target.closest('form');
+
+    if (form) {
+      // Set the orderId as the form's hidden input value
+      const orderIdInput = form.querySelector('input[name="orderId"]');
+      orderIdInput.value = orderId;
+
+      // Submit the form
+      form.submit();
+    }
+  }
+});
+ 

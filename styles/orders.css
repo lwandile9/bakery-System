@@ -5,3 +5,35 @@
      flex-direction: column;
 
 }
+
+#track-order-container{
+
+     grid-column: 1/4;
+     background-color: rgb(205, 202, 202);
+     padding: 8px 12px;
+     min-width:50%;
+     max-width:80%;
+     margin: auto;
+
+}
+
+.currentStatus{
+
+     border: solid 2px rgb(83, 208, 10);
+     background-color: white;
+     color: black;
+     padding: 2px 5px;
+     font-weight: 750;
+     font-size:large;
+     box-shadow: 2px 2px 5px rgb(236, 232, 232)
+     
+}
+.currentStatus::after{
+
+    content:"\2713";
+    color: rgb(9, 214, 9);
+    font-size: 24px;
+    margin-right: 5px;  
+
+}
+

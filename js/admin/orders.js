@@ -30,7 +30,7 @@ function fetchAndPopulateOrders() {
                       <label for="update-status">Update Order Status:
                           <select id="update-status-${order.orderId}" name="update-status" class="update-order-status">
                               <option></option>
-                              <option>Waiting-Approval</option>
+                              <option>waiting-approval</option>
                               <option>Approved</option>
                               <option>Rejected</option>
                               <option>Out-for-Delivery</option>
