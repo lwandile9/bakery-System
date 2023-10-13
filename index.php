@@ -11,7 +11,7 @@
 </head>
 <body>
      <header>
-       <h1>My Backeries</h1>
+       <h1>Thina's Backeries</h1>
      </header>
      <Main >
         <form action="includes/login.inc.php" method="post"  class="login-form" onsubmit="return validateForm()">

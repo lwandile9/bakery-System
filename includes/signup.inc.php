@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST["signup"])){
 
     require_once "functions.inc.php";

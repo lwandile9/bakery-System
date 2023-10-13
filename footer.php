@@ -1,8 +1,8 @@
 <footer id="main-footer">
-    <p>&copy;My Bakery.co.za</p>
+    <p>&copy;Thina's Bakery.co.za</p>
     <div>
-       <p><b>Customer care </b>:062191040</p>
-       <p>Lwandiletoto@gmail.com</p>
+       <p><b>Customer care </b>:0783960036</p>
+       <p>33HA2100851@MYBOSTON.CO.ZA</p>
     </div> 
   </footer>
  

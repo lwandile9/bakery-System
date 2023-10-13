@@ -85,33 +85,33 @@ window.addEventListener('load', function () {
        const subTotalElement=document.getElementById("sub-total");
        const deleveryFeeElement=document.getElementById("handling");
        const numberItemsElement=document.getElementById("items-span");
-      // Convert the productInfo object into an array
-      let productArray = Object.values(productInfo);
-      let cartSubtotal = 0;
-      let numberOfItems = 0;
-      
-      // Loop through productArray and create HTML elements for each cart item
-      productArray.forEach(function (item) {
-          let cartItemDiv = document.createElement('div');
-          cartItemDiv.classList.add('card');
-         
-          cartSubtotal += parseFloat(item.totalPrice);
-          numberOfItems++;
-         
-          cartItemDiv.innerHTML = `
-              <div class="image-container">
-                  <img src="${item.productImage}">
-              </div>
-              <div class="product-details">
-                  <p>${item.productName}</p>
-                  <p>R${item.totalPrice}</p>
-                  <p>Quantity: ${item.quantity}</p>
-                  <button>Delete Item</button>
-              </div>
-          `;
-  
-          cartProductsContainer.appendChild(cartItemDiv);
-      });
+    // Convert the productInfo object into an array
+let productArray = Object.values(productInfo);
+let cartSubtotal = 0;
+let numberOfItems = 0;
+
+// Loop through productArray and create HTML elements for each cart item
+productArray.forEach(function (item) {
+    let cartItemDiv = document.createElement('div');
+    cartItemDiv.classList.add('card');
+
+    cartSubtotal += parseFloat(item.totalPrice);
+    numberOfItems++;
+
+    cartItemDiv.innerHTML = `
+        <div class="image-container">
+            <img src="${item.productImage}">
+        </div>
+        <div class="product-details">
+            <p>${item.productName}</p>
+            <p>R${Number.parseFloat(item.totalPrice).toFixed(2)}</p>
+            <p>Quantity: ${item.quantity}</p>
+            <button>Delete Item</button>
+        </div>
+    `;
+
+    cartProductsContainer.appendChild(cartItemDiv);
+});
       let deliveryFee = 10 * numberOfItems;
       let cartTotalPrice = cartSubtotal + deliveryFee;
       
