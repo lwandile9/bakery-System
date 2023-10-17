@@ -7,7 +7,7 @@ $userId = $_SESSION['userID'];
 $productInfo = array();
 
 // Prepare and execute the query to fetch cart items
-$stmt = $conn->prepare("SELECT productId, productQuantity FROM tblcart WHERE userId = ?");
+$stmt = $conn->prepare("SELECT cartId, productId, productQuantity FROM tblcart WHERE userId = ?");
 $stmt->bind_param("s", $userId); 
 $stmt->execute();
 
@@ -16,6 +16,7 @@ $result = $stmt->get_result();
 
 // Fetch data and store in the associative array
 while ($row = $result->fetch_assoc()) {
+    $cartId = $row['cartId'];
     $productId = $row['productId'];
     $productQuantity = $row['productQuantity'];
 
@@ -36,6 +37,7 @@ while ($row = $result->fetch_assoc()) {
 
         // Add product information to the associative array
         $productInfo[$productId] = array(
+            "cartId" => $cartId,
             "productName" => $productName,
             "quantity" => $productQuantity,
             "totalPrice" => $productTotalPrice,

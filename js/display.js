@@ -94,7 +94,7 @@ document.addEventListener('click', (event) => {
   if (event.target && event.target.classList.contains('add-to-cart')) {
     const productName = event.target.dataset.product;
     const productID = event.target.dataset.productId; 
-    const productQuantity = 1; 
+    const productQuantity = 0; 
 
     // Send a POST request to cart.inc.php script
     const xhr = new XMLHttpRequest();
@@ -139,3 +139,46 @@ document.addEventListener('click', (event) => {
     xhr.send(data);
   }
 });
+
+
+
+   // Use event delegation to handle "Add to Cart" button clicks
+
+   document.addEventListener('click', (event) => {
+    if (event.target && event.target.classList.contains('add-to-cart')) {
+      const productName = event.target.dataset.product;
+      const productID = event.target.dataset.productId; 
+      const productQuantity = 1; 
+  
+      // Sending a POST request to  script
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '../includes/cart.inc.php', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+      // Defining the data to send to the PHP script
+      const data = `productID=${encodeURIComponent(productID)}&productQuantity=${encodeURIComponent(productQuantity)}`;
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+         
+          const response = JSON.parse(xhr.responseText);
+          console.log(response);
+  
+          if (response.success) {
+            // Show the "added" message
+            const addedMessage = document.createElement('p');
+            addedMessage.textContent = 'Added';
+            document.body.appendChild(addedMessage);
+  
+            // Remove the "added" message after 2 seconds
+            setTimeout(() => {
+              document.body.removeChild(addedMessage);
+            }, 2000);
+          }
+        }
+      };
+  
+      // Send the data to the PHP script
+      xhr.send(data);
+    }
+  });

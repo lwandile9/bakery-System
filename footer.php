@@ -7,9 +7,10 @@
   </footer>
  
 </div>
+
   <script src="../js/data.js"></script>
-  <script src="../js/cart.js"></script>
   <script src="../js/display.js"></script>
+  
 
 </body>
 </html>

@@ -1,48 +1,6 @@
 
 cartProductContainerElement = document.getElementById("cart-products-container");
 
-   // Use event delegation to handle "Add to Cart" button clicks
-
-document.addEventListener('click', (event) => {
-    if (event.target && event.target.classList.contains('add-to-cart')) {
-      const productName = event.target.dataset.product;
-      const productID = event.target.dataset.productId; 
-      const productQuantity = 1; 
-  
-      // Sending a POST request to  script
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', '../includes/cart.inc.php', true);
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  
-      // Defining the data to send to the PHP script
-      const data = `productID=${encodeURIComponent(productID)}&productQuantity=${encodeURIComponent(productQuantity)}`;
-  
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-         
-          const response = JSON.parse(xhr.responseText);
-          console.log(response);
-  
-          if (response.success) {
-            // Show the "added" message
-            const addedMessage = document.createElement('p');
-            addedMessage.textContent = 'Added';
-            document.body.appendChild(addedMessage);
-  
-            // Remove the "added" message after 2 seconds
-            setTimeout(() => {
-              document.body.removeChild(addedMessage);
-            }, 2000);
-          }
-        }
-      };
-  
-      // Send the data to the PHP script
-      xhr.send(data);
-    }
-  });
-
-
  // show cart items
 
  var productInfo = [
@@ -80,7 +38,7 @@ window.addEventListener('load', function () {
 
     // Function to populate the cart products container
     function populateCartProducts() {
-      var cartProductsContainer = document.getElementById('cart-products-container');
+     
        const cartTotalElement = document.getElementById("total");
        const subTotalElement=document.getElementById("sub-total");
        const deleveryFeeElement=document.getElementById("handling");
@@ -106,11 +64,11 @@ productArray.forEach(function (item) {
             <p>${item.productName}</p>
             <p>R${Number.parseFloat(item.totalPrice).toFixed(2)}</p>
             <p>Quantity: ${item.quantity}</p>
-            <button>Delete Item</button>
+            <button class="btnDeleteItem" data-buttonid="${item.cartId}">Delete Item</button>
         </div>
     `;
 
-    cartProductsContainer.appendChild(cartItemDiv);
+    cartProductContainerElement.appendChild(cartItemDiv);
 });
       let deliveryFee = 10 * numberOfItems;
       let cartTotalPrice = cartSubtotal + deliveryFee;
@@ -133,12 +91,19 @@ productArray.forEach(function (item) {
 
         const deliveryDateTimeElement = document.getElementById("datetimepicker");
 const deleveryDateTime = deliveryDateTimeElement.value;
-alert(deleveryDateTime);
-
         const numberOfProductsElement = document.getElementById("items-span");
         const numberOfProducts = numberOfProductsElement.textContent || numberOfProductsElement.innerText;
 
-        // Prepare the data to send as an object
+    //checking for empty cart and if the delvery date is picked 
+          if (numberOfProducts<=0  ){
+
+               alert("please add Items into the cart from home page");
+          }else if(deleveryDateTime==""){
+            alert("please pick desired delevery date");
+               
+          }else{
+
+                // Prepare the data to send as an object
         const orderData = {
             totalPrice: totoPrice,
             orderDate: deleveryDateTime,
@@ -160,6 +125,39 @@ alert(deleveryDateTime);
         .catch(error => {
             console.error('Error:', error);
         });
+
+          }
+    
     });
 });
   
+
+// Deleting cart products
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cartProductContainerElement = document.getElementById("cart-products-container");
+
+    cartProductContainerElement.addEventListener("click", (event) => {
+        if (event.target.classList.contains("btnDeleteItem")) {
+            const buttonId = event.target.dataset.buttonid;
+
+            // Send a request to the PHP script to delete the item with the specified cartId
+            fetch(`../includes/deleteCartItem.inc.php?cartId=${buttonId}`, {
+                method: 'DELETE', // Use the appropriate HTTP method (e.g., POST or DELETE)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Item was successfully deleted from the database
+                    // You can also remove the item from the UI here if needed
+                    event.target.parentElement.parentElement.remove(); // Remove the entire cart item div
+                } else {
+                    console.error('Error deleting item from the database:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    });
+});

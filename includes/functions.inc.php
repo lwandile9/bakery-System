@@ -94,6 +94,10 @@ function loginUser($conn ,$userName,$password){
         $_SESSION["userID"]=$userExist["usersId"];
         $_SESSION["userName"]=$userExist["usersName"];
         header("location: ../customer/customer-dashboard.php?login=success");
+        if(isset(($_SESSION['LoginLogout']))){
+            unset($_SESSION["LoginLogout"]);
+        }
+        
          exit();
 
     }

@@ -2,13 +2,13 @@
 
 require_once "dbh.inc.php";
 
-// Get the productID from the POST request
-$productID = isset($_POST['productID']) ? $_POST['productID'] : null;
+// Get the cartId from the GET request
+$cartId = isset($_GET['cartId']) ? $_GET['cartId'] : null;
 
-if ($productID !== null) {
+if ($cartId !== null) {
     // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("DELETE FROM tblcart WHERE productId = ?");
-    $stmt->bind_param("i", $productID);
+    $stmt = $conn->prepare("DELETE FROM tblcart WHERE cartId = ?");
+    $stmt->bind_param("i", $cartId);
 
     if ($stmt->execute()) {
         // Successfully deleted the item
@@ -22,10 +22,8 @@ if ($productID !== null) {
 
     $stmt->close();
 } else {
-    
     $response = array('success' => false, 'message' => 'Invalid request');
     echo json_encode($response);
 }
-
 
 $conn->close();
